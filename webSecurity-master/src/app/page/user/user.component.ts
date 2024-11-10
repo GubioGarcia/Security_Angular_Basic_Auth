@@ -31,14 +31,32 @@ export class UserComponent {
   displayDialogView: boolean = false;
   displayDialogEdit: boolean = false;
   displayErrorDialog: boolean = false;
-  router: any;
   errorMessage: string = '';
+
+  // roles: string[] = ["user"];
+  // newUser: User = { username: '', password: '', roles: [] };
 
   constructor(private userService: UserService, private messageService: MessageService) {}
 
   ngOnInit() {
-    this.userService.get().subscribe((response: User[]) => {
-      this.users = response;
+    this.userService.get().subscribe({
+      next: (response) => {
+        console.log(response)
+        this.users = response;
+      }
     });
   }
+
+  // adicionarNovoUser() {
+  //   this.userService.adicionarUser(this.newUser).subscribe({
+  //     next: (response) => {
+  //       this.users.push(response);  // Adiciona o novo usuário à lista de usuários
+  //       this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Usuário adicionado com sucesso' });
+  //     },
+  //     error: (error) => {
+  //       this.errorMessage = 'Erro ao adicionar usuário';
+  //       this.displayErrorDialog = true;
+  //     }
+  //   });
+  // }
 }

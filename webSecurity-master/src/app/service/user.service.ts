@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
@@ -8,16 +8,27 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class UserService {
   private users: User[] = [];
-  private url = "http://localhost:8080/api/users";
+  private url = "http://localhost:8080/user";
 
   constructor(private httpClient: HttpClient) {}
 
   get() {
-    return this.httpClient.get<User[]>(this.url);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + token
+    });
+
+    return this.httpClient.get<User[]>(this.url, {headers});
   }
 
   adicionarUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(this.url, user);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + token,
+      'Content-Type': 'application/json'
+    });
+
+    return this.httpClient.post<User>(this.url, user, { headers });
   }
 
   listarUser(): User[] {

@@ -14,11 +14,11 @@ export class AuthServiceService {
 
   login(username: string, password: string) {
     if (username && password) {
-      if (username === 'admin' && password === 'admin') {
+      if (username === 'admin' && password === '123') {
         this.setAuthState(true, true)
         this.router.navigate(['/dashboard']);
         return true;
-      } else if (username === 'user' && password === 'user') {
+      } else if (username === 'user' && password === '123') {
         this.setAuthState(true, false)
         this.router.navigate(['/dashboard']);
         return true;

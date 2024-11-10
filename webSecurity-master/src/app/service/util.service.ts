@@ -16,7 +16,6 @@ export class UtilService {
       Authorization: 'Basic ' + token
     });
 
-
     return this.http.get(this.url + "/api", {headers, responseType: "text"});
   }
 
@@ -46,5 +45,4 @@ export class UtilService {
 
     this.http.get(this.url + "/api/profile", {headers});
   }
-
 }

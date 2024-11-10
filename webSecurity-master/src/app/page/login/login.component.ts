@@ -28,7 +28,7 @@ export class LoginComponent {
   onLogin(): void {
     const success = this.authService.login(this.username, this.password);
     if (!success) {
-      this.errorMessage = 'Nome de usuário ou senha inválidos.';
+      alert('Nome de usuário ou senha inválidos.')
     }
   }
 

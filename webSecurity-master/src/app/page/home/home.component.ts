@@ -22,8 +22,8 @@ export class HomeComponent {
     this.router.navigate(['/admin']);
   }
 
-  gerente(){
-    this.router.navigate(['/gerente']);
+  dashboard(){
+    this.router.navigate(['/dashboard']);
   }
 
   profile(){

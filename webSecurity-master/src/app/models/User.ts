@@ -1,13 +1,11 @@
 export class User {
-  private static idCounter: number = 1;
-
   public id: number;
-  public nome: string;
+  public username: string;
   public password: string;
 
-  constructor(nome: string, password: string) {
-    this.id = User.idCounter++;
-    this.nome = nome;
+  constructor(id: number, username: string, password: string) {
+    this.id = id;
+    this.username = username;
     this.password = password;
   }
 }

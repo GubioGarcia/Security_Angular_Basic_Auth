@@ -34,7 +34,7 @@ public class StartApplication implements CommandLineRunner {
             User user = new User();
             user.setUsername(name);
             user.setUsername(username);
-            user.setPassword(new BCryptPasswordEncoder().encode(password));
+            user.setPassword(password);
             user.getRoles().add(role);
             repository.save(user);
         }
